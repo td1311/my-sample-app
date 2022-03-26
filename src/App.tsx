@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Counter } from './features/counter/Counter';
 import { Pokemon } from './features/pokemon/Pokemon';
+import { UsersList } from './features/user/UsersList';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Pokemon />
+    <UsersList />
   );
 }
 
