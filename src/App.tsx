@@ -1,9 +1,7 @@
-import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { Counter } from './features/counter/Counter';
-import { Pokemon } from './features/pokemon/Pokemon';
+import React from 'react';
 import { UsersList } from './features/user/UsersList';
+import './App.css';
 
 function App() {
   return (

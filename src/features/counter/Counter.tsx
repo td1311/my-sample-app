@@ -1,4 +1,4 @@
-import { decrement, increment } from './counterSlice';
+import { decrement, increment } from '../../services/counter/counterSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 
 export function Counter() {

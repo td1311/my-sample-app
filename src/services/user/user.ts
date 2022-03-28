@@ -1,15 +1,10 @@
-import { createEntityAdapter } from '@reduxjs/toolkit'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { baseApi } from '../base/baseApi'
 
-const userAdapter = createEntityAdapter()
-
-export const userApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://reqres.in/' }),
+export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => 'api/users',
+      query: (page: number) => ({ url: `api/users?page=${page}`, method: 'get' }),
     }),
-    
   }),
 })
 
