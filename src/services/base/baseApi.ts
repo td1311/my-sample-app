@@ -5,5 +5,6 @@ export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: axiosBaseQuery({ baseUrl: 'https://reqres.in/' }),
   // baseQuery: fetchBaseQuery({ baseUrl: 'https://reqres.in/' }),
+  tagTypes: ['User', 'Pokemon'],
   endpoints: () => ({}),
 })
