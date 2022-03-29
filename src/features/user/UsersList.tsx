@@ -5,10 +5,6 @@ export function UsersList() {
   const [page, setPage] = useState(1)
   const { data, isLoading, isFetching, isError, refetch } = useGetUsersQuery(page)
 
-  useEffect(() => {
-    refetch()
-  }, [page])
-
   if (isError) return <div>An error has occurred!</div>
 
   if (isLoading) return <div>Loading...</div>
@@ -18,11 +14,27 @@ export function UsersList() {
       {data?.data.map((item) => (
         <div>{item.email}</div>
       ))}
-      <button onClick={() => { setPage(1) }}>
-        Page 1
+      <button onClick={() => {
+        setPage(1)
+        refetch()
+      }}>
+        Page 1 refetch
       </button>
-      <button onClick={() => { setPage(2) }}>
-        Page 2
+      <button onClick={() => {
+        setPage(2)
+        refetch()
+      }}>
+        Page 2 refetch
+      </button>
+      <button onClick={() => {
+        setPage(1)
+      }}>
+        Page 1 with cache
+      </button>
+      <button onClick={() => {
+        setPage(2)
+      }}>
+        Page 2 with cache
       </button>
     </div>
   )
