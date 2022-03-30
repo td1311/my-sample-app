@@ -4,20 +4,20 @@ import { useState } from 'react';
 
 export function AddEditUser() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<User>()
-  const [createUser, create] = useCreateUserMutation()
-  const users = useGetUsersQuery(1)
+  const [createUser, createUserResult] = useCreateUserMutation()
+  const getUsersResult = useGetUsersQuery(1)
 
   const addUser = async (data: User) => {
     console.log(data)
     createUser(data)
   }
 
-  if (create.isLoading) return <div>Loading...</div>
+  if (createUserResult.isLoading) return <div>Loading...</div>
 
   return (
     <div>
       <p>User List</p>
-      {users.data?.data.map((item) => (
+      {getUsersResult.data?.data.map((item) => (
         <div>{item.first_name}</div>
       ))}
       <form onSubmit={handleSubmit((data) => addUser(data))}>
