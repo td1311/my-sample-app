@@ -12,7 +12,7 @@ export function UsersList() {
   return (
     <div>
       {data?.data.map((item) => (
-        <div>{item.email}</div>
+        <div key={item.id}>{item.email}</div>
       ))}
       <button onClick={() => {
         setPage(1)

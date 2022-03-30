@@ -33,7 +33,7 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<GetUsersResponse, number>({
       query: (page: number) => ({ url: `api/users?page=${page}`, method: 'GET' }),
-      providesTags: (result, error, id) => [{ type: 'User', id: 'LIST' }],
+      providesTags: [{ type: 'User', id: 'LIST' }],
     }),
     getUser: builder.query<GetUserResponse, number>({
       query: (id: number) => ({ url: `api/users/${id}`, method: 'GET' }),

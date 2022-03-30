@@ -1,4 +1,5 @@
 import counterReducer from '../../services/counter/counterSlice';
+import logger from 'redux-logger';
 import { baseApi } from '../../services/base/baseApi';
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
@@ -9,7 +10,7 @@ export const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
+    getDefaultMiddleware().concat(baseApi.middleware, logger),
 })
 
 setupListeners(store.dispatch)
