@@ -1,17 +1,41 @@
-import counterReducer from '../../services/counter/counterSlice';
 import logger from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session'
 import { baseApi } from '../../services/base/baseApi';
 import { configureStore } from '@reduxjs/toolkit';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE
+} from 'redux-persist';
+import { rootReducer } from '../rootReducer';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage: storageSession,
+  // blacklist: ['counter']
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    [baseApi.reducerPath]: baseApi.reducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware, logger),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(baseApi.middleware, logger),
 })
+
+export const persistor = persistStore(store)
 
 setupListeners(store.dispatch)
 
