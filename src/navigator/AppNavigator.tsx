@@ -1,8 +1,8 @@
-import { AddEditUser } from '../user/AddEditUser';
-import { Counter } from '../counter/Counter';
-import { Home } from '../home/Home';
+import { AddEditUser } from '../features/user/AddEditUser';
+import { Counter } from '../features/counter/Counter';
+import { Home } from '../features/home/Home';
 import { Route, Routes } from 'react-router-dom';
-import { UsersList } from '../user/UsersList';
+import { UsersList } from '../features/user/UsersList';
 
 export function AppNavigator() {
 

@@ -21,8 +21,8 @@ export function AddEditUser() {
         <div>{item.first_name}</div>
       ))}
       <form onSubmit={handleSubmit((data) => addUser(data))}>
-        <input {...register("name")} placeholder="Name" value="name"/>
-        <input {...register("job")} placeholder="Job" value="job"/>
+        <input {...register("name"), { required: true }} placeholder="Name" value="name" />
+        <input {...register("job")} placeholder="Job" value="job" />
         <input type="submit" />
       </form>
     </div>

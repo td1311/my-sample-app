@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import React from 'react';
 import { UsersList } from './features/user/UsersList';
 import './App.css';
-import { AppNavigator } from './features/navigator/AppNavigator';
+import { AppNavigator } from './navigator/AppNavigator';
 import { Home } from './features/home/Home';
 import { Counter } from './features/counter/Counter';
 import { Routes, Route } from 'react-router-dom';
